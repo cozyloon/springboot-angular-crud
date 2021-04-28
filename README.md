@@ -1,3 +1,5 @@
+![ScreenShot](ss/a.png)
+![ScreenShot](ss/b.png)
 # StudentsDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
