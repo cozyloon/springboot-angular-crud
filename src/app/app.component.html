@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="card mt-5" style="align-items: center;">
+    <h1>Students Dashboard</h1>
+  </div>
+
+  <div class="card mt-5" style="padding: 20px;">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+      <div class="form-group">
+        <label for="name">Student Name:</label>
+        <input #name (ngModel)="name" class="form-control" id="name" name="name" placeholder="Student Name" type="text">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Student Address:</label>
+        <input #address (ngModel)="address" class="form-control" id="address" name="address"
+               placeholder="Student Address"
+               type="text">
+      </div>
+
+      <div class="form-group">
+        <label for="per">Student Percentage:</label>
+        <input #percentage (ngModel)="percentage" class="form-control" id="per" name="percentage"
+               placeholder="Student Percentage"
+               type="text">
+      </div>
+
+
+      <div class="form-group">
+        <input class="btn btn-primary w-100" type="submit" value="Register">
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="mt-5">
+    <table class="table table-bordered">
+      <thead class="thead">
+      <tr>
+        <th>Roll Number</th>
+        <th> Name</th>
+        <th> Address</th>
+        <th> Percentage</th>
+        <th> Edit</th>
+        <th> Delete</th>
+      </tr>
+      </thead>
+
+      <tbody class="tbody">
+      <tr *ngFor="let student of studentDetails">
+        <td>{{student.rollNumber}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.address}}</td>
+        <td>{{student.percentage}}</td>
+        <td>
+          <button (click)="edit(student)" class="btn btn-primary" data-target="#exampleModal" data-toggle="modal"
+                  type="button">Edit
+          </button>
+        </td>
+        <td>
+          <button (click)="deleteStudent(student)" class="btn btn-danger" type="button">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form #updateForm="ngForm" (ngSubmit)="updateStduent()">
+
+          <div class="form-group">
+            <label for="rn">Roll Number:</label>
+            <input #rollNumber [(ngModel)]="studentToUpdate.rollNumber" class="form-control" disabled id="rn"
+                   name="rollNumber"
+                   placeholder="Roll Number"
+                   type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="name">Student Name:</label>
+            <input #name [(ngModel)]="studentToUpdate.name" class="form-control" id="name" name="name"
+                   placeholder="Student Name"
+                   type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="address">Student Address:</label>
+            <input #address [(ngModel)]="studentToUpdate.address" class="form-control" id="address" name="address"
+                   placeholder="Student Address"
+                   type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="per">Student Percentage:</label>
+            <input #percentage [(ngModel)]="studentToUpdate.percentage" class="form-control" id="per" name="percentage"
+                   placeholder="Student Percentage"
+                   type="text">
+          </div>
+
+
+          <div class="form-group">
+            <input class="btn btn-primary w-100" type="submit" value="Update">
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
